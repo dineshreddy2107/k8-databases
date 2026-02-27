@@ -42,7 +42,7 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mogodb
+  name: mongodb
   namespace: roboshop
 spec:
   selector:
@@ -67,13 +67,13 @@ spec:
         image: dineshreddy11/mongodb:v1
         volumeMounts:
         - name: mongodb-data
-          mountPath: /data
+          mountPath: /data/db
   volumeClaimTemplates:
   - metadata:
       name: mongodb-data 
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "ebs-roboshop"
+      storageClassName: "roboshop-ebs"
       resources:
         requests:
           storage: 2Gi
