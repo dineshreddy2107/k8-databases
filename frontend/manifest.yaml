@@ -121,10 +121,7 @@ spec:
         # envFrom:
         # - configMapRef:
         #     name: frontend
-        volumeMounts:
-              - name: nginx-conf
-                mountPath: /etc/nginx/nginx.conf
-                resources:
+        resources:
                   requests:
                     cpu: "50m"
                     memory: "128Mi"
@@ -133,6 +130,10 @@ spec:
                     memory: "256Mi"
                     subPath: nginx.conf
                     readOnly: true
+        volumeMounts:
+              - name: nginx-conf
+                mountPath: /etc/nginx/nginx.conf
+                
       volumes:
       - name: nginx-conf
         configMap: 
